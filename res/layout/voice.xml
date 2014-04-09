@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relat_progress"
+    android:layout_width="match_parent"
+    android:layout_height="30dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/image_play"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/progresslayout_bg"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/textView_totaltime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="00:00"
+            android:textColor="#318fd3" />
+
+        <ProgressBar
+            android:id="@+id/seekBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/textView_totaltime"
+            android:background="@drawable/progress_buffering"
+            android:progressDrawable="@drawable/seekbar_style" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/image_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/play_stop_botton"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/image_play_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/play_weibo"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/image_stop_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stop_weibo"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/voice_downloading"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="14.0dip"
+            android:layout_height="14.0dip"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

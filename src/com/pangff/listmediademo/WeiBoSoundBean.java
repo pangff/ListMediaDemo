@@ -1,0 +1,30 @@
+package com.pangff.listmediademo;
+
+
+
+public class WeiBoSoundBean extends RootPojo implements ISoundBean  {
+  
+  private int timelen;//语音时长
+  private String url;//语音地址
+
+  @Override
+  public int getTimelen() {
+    return timelen;
+  }
+
+  @Override
+  public void setTimelen(int timelen) {
+    this.timelen = timelen;
+  }
+
+  @Override
+  public String getUrl() {
+    return url;
+  }
+
+  @Override
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+}
