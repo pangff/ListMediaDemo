@@ -1,6 +1,8 @@
-package com.pangff.listmediademo;
+package com.pangff.listmediademo.witget;
 
 import android.widget.Toast;
+
+import com.pangff.listmediademo.BaseApplication;
 
 public class ToastUtil {
   static Toast toast;

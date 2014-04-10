@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.pangff.listmediademo.witget.VoiceHolderTwo;
+import com.pangff.listmediademo.witget.VoicePlayUtil;
+
 public class VoiceAdapter extends BaseAdapter{
   VoicePlayUtil voicePlayUtil;
   BaseActivity context;

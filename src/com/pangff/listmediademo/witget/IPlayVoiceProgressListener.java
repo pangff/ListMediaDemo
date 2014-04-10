@@ -1,4 +1,4 @@
-package com.pangff.listmediademo;
+package com.pangff.listmediademo.witget;
 
 
 public interface IPlayVoiceProgressListener extends IEventListener {

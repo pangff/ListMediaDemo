@@ -1,4 +1,4 @@
-package com.pangff.listmediademo;
+package com.pangff.listmediademo.witget;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.v4.util.LruCache;
+
+import com.pangff.listmediademo.BaseApplication;
 
 public class DownloadProgressCache {
   private DownloadProgressCache() {

@@ -1,4 +1,4 @@
-package com.pangff.listmediademo;
+package com.pangff.listmediademo.witget;
 
 import java.io.File;
 
@@ -12,8 +12,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.pangff.listmediademo.AppDownloadTask.DownloadProgressListener;
-import com.pangff.listmediademo.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
+import com.pangff.listmediademo.R;
+import com.pangff.listmediademo.witget.AppDownloadTask.DownloadProgressListener;
+import com.pangff.listmediademo.witget.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
 
 public class VoiceHolderTwo {
   // 语音相关

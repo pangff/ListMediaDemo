@@ -1,5 +1,8 @@
 package com.pangff.listmediademo;
 
+import com.pangff.listmediademo.witget.ISoundBean;
+import com.pangff.listmediademo.witget.RootPojo;
+
 
 
 public class WeiBoSoundBean extends RootPojo implements ISoundBean  {
