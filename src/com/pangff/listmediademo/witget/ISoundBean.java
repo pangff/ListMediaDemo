@@ -12,4 +12,6 @@ public interface ISoundBean {
 
   public abstract void setUrl(String url);
 
+  
+  public abstract boolean isDiskCache();
 }

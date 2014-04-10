@@ -12,6 +12,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:background="@drawable/progresslayout_bg"
         android:gravity="center_vertical" >
 
@@ -26,6 +27,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="00:00"
+            android:visibility="gone"
             android:textColor="#318fd3" />
 
         <ProgressBar
@@ -36,6 +38,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
+            android:visibility="gone"
             android:layout_toLeftOf="@+id/textView_totaltime"
             android:background="@drawable/progress_buffering"
             android:progressDrawable="@drawable/seekbar_style" />

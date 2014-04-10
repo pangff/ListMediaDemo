@@ -102,8 +102,7 @@ public class VoiceHolderTwo {
    * @param voiceHolder
    * @param newBean
    */
-  public void bindSound(final ISoundBean sound, final boolean fake,
-      final VoicePlayUtil voicePlayUtil) {
+  public void bindSound(final ISoundBean sound,final VoicePlayUtil voicePlayUtil) {
 
     if (sound == null) {
       container_voice.setVisibility(View.GONE);
@@ -153,7 +152,7 @@ public class VoiceHolderTwo {
         int start = sound.getUrl().lastIndexOf("/") + 1;
         final String voicesName = sound.getUrl().substring(start, sound.getUrl().length());
         final String path;
-        if (fake) {
+        if (sound.isDiskCache()) {
           path = sound.getUrl();
         } else {
           path = PhoneUtils.getSDPath() + "/pangff/voices/" + voicesName;

@@ -9,6 +9,7 @@ public class WeiBoSoundBean extends RootPojo implements ISoundBean  {
   
   private int timelen;//语音时长
   private String url;//语音地址
+  private boolean isDiskCache = false;
 
   @Override
   public int getTimelen() {
@@ -28,6 +29,14 @@ public class WeiBoSoundBean extends RootPojo implements ISoundBean  {
   @Override
   public void setUrl(String url) {
     this.url = url;
+  }
+
+  public boolean isDiskCache() {
+    return isDiskCache;
+  }
+
+  public void setDiskCache(boolean isDiskCache) {
+    this.isDiskCache = isDiskCache;
   }
 
 }
