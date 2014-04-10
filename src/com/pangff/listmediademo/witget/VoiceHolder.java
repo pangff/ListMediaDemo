@@ -16,7 +16,7 @@ import com.pangff.listmediademo.R;
 import com.pangff.listmediademo.witget.AppDownloadTask.DownloadProgressListener;
 import com.pangff.listmediademo.witget.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
 
-public class VoiceHolderTwo {
+public class VoiceHolder {
   // 语音相关
   public TextView tvTotalTime;
   public LinearLayout playButton;
@@ -29,7 +29,7 @@ public class VoiceHolderTwo {
   public boolean downloading;
   IPlayVoiceProgressListener listener;
 
-  public VoiceHolderTwo(View parent) {
+  public VoiceHolder(View parent) {
     playButton = (LinearLayout) parent.findViewById(R.id.image_play);
     seekBar = (ProgressBar) parent.findViewById(R.id.seekBar);
     pbVoiceDownloading = (ProgressBar) parent.findViewById(R.id.voice_downloading);
@@ -102,7 +102,7 @@ public class VoiceHolderTwo {
    * @param voiceHolder
    * @param newBean
    */
-  public void bindSound(final ISoundBean sound,final VoicePlayUtil voicePlayUtil) {
+  public void bindSound(final ISoundBean sound, final VoicePlayUtil voicePlayUtil) {
 
     if (sound == null) {
       container_voice.setVisibility(View.GONE);
@@ -142,12 +142,14 @@ public class VoiceHolderTwo {
 
       @Override
       public void onClick(View v) {
+        startVoice();
+      }
 
+      public void startVoice() {
         if (!PhoneUtils.isSDMounted()) {
           ToastUtil.show("您的SD卡不可用");
           return;
         }
-
         // 获取服务器的语音信息
         int start = sound.getUrl().lastIndexOf("/") + 1;
         final String voicesName = sound.getUrl().substring(start, sound.getUrl().length());
@@ -155,7 +157,7 @@ public class VoiceHolderTwo {
         if (sound.isDiskCache()) {
           path = sound.getUrl();
         } else {
-          path = PhoneUtils.getSDPath() + "/pangff/voices/" + voicesName;
+          path = PhoneUtils.getVoiceOnSDPath(voicesName);
         }
 
         File filePath = new File(path);
@@ -218,7 +220,6 @@ public class VoiceHolderTwo {
           voicePlayUtil.mediaPlay.stop();
         }
         voicePlayUtil.voiceId = voiceId;
-
       }
 
       public void playOrStop(final ISoundBean sound, final String path) {
@@ -269,6 +270,11 @@ public class VoiceHolderTwo {
         voicePlayUtil.getMediaPlayer().stop();
       }
     });
+  }
+  
+  
+  public LinearLayout getTrigger(){
+   return  playButton;
   }
 
   public void setPlaying(final int progress) {

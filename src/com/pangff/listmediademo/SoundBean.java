@@ -5,7 +5,7 @@ import com.pangff.listmediademo.witget.RootPojo;
 
 
 
-public class WeiBoSoundBean extends RootPojo implements ISoundBean  {
+public class SoundBean extends RootPojo implements ISoundBean  {
   
   private int timelen;//语音时长
   private String url;//语音地址

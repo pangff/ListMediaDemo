@@ -1,25 +1,31 @@
 package com.pangff.listmediademo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.pangff.listmediademo.witget.VoiceHolderTwo;
+import com.pangff.listmediademo.witget.ViewVoiceHolder;
 import com.pangff.listmediademo.witget.VoicePlayUtil;
 
 public class VoiceAdapter extends BaseAdapter{
   VoicePlayUtil voicePlayUtil;
   BaseActivity context;
+  boolean isAutoPalay = false;
+  
+  List<SoundBean> viewList = new ArrayList<SoundBean>();
   public VoiceAdapter(Context context){
     this.context = (BaseActivity) context;
-    voicePlayUtil = new VoicePlayUtil(this.context);
+    voicePlayUtil = new VoicePlayUtil(this.context);//初始化音频控制对象
   }
   
   @Override
   public int getCount() {
-    return 10;
+    return viewList.size();
   }
 
   @Override
@@ -32,28 +38,62 @@ public class VoiceAdapter extends BaseAdapter{
     return 0;
   }
   
-  public void setmediaPlay(Boolean flag) {
+  /**
+   * 是否销毁
+   * @param flag
+   */
+  public void setMediaPlay(Boolean flag) {
     if (flag == false) {
       voicePlayUtil.release();
     }
   }
+  
+  /**
+   * 设置是否自动播放
+   * @param isAutoPalay
+   */
+  public void setAutoPlay(Boolean isAutoPalay) {
+    this.isAutoPalay = isAutoPalay;
+  }
+  
+  /**
+   * 数据刷新
+   * @param list
+   */
+  public void refreshData(List<SoundBean> list){
+    viewList.clear();
+    if(list!=null){
+      viewList.addAll(list);
+    }
+    notifyDataSetChanged();
+  }
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    VoiceHolderTwo voiceHolder;
+    final ViewHolder viewHolder;
     if(convertView==null){
       convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
-      voiceHolder = new VoiceHolderTwo(convertView);
-      convertView.setTag(voiceHolder);
+      viewHolder = new ViewHolder(convertView);
+      convertView.setTag(viewHolder);
     }else{
-      voiceHolder = (VoiceHolderTwo) convertView.getTag();
+      viewHolder = (ViewHolder) convertView.getTag();
     }
-    WeiBoSoundBean weiBoSoundBean = new WeiBoSoundBean();
-    weiBoSoundBean.setUrl("http://xdong.0943.com.cn/music/%E6%97%A0%E6%B3%AA%E7%9A%84%E9%81%97%E6%86%BE.mp3");
-    weiBoSoundBean.setTimelen(300000);
-    
-    voiceHolder.bindSound(weiBoSoundBean, voicePlayUtil);
+    SoundBean soundBean = viewList.get(position);
+    viewHolder.voiceHolder.bindSound(soundBean, voicePlayUtil);
+    if(position==0 && isAutoPalay){//如果自动播放，自动播放第一个
+      viewHolder.voiceHolder.getTrigger().postDelayed(new Runnable() {
+        @Override
+        public void run() {
+          viewHolder.voiceHolder.getTrigger().performClick();
+        }
+      }, 300);
+    }
     return convertView;
   }
-
+  
+  static class ViewHolder extends ViewVoiceHolder{
+    public ViewHolder(View parent){
+     super(parent);
+    }
+  }
 }

@@ -24,12 +24,19 @@ public class PhoneUtils {
     } else {
       StringBuilder sbPhone = new StringBuilder();
       sbPhone.append(Environment.getDataDirectory());
-      sbPhone.append("/data/jhss.youguu.finance");
-      // sbPhone.append(product_name).append("/");
+      sbPhone.append("/data/com.witmob.callme");
       return sbPhone.toString();
     }
     return sdDir.toString();
-
+  }
+  
+  /**
+   * 得到sd卡的路径
+   * 
+   * @return
+   */
+  public static String getVoiceOnSDPath(String voiceName) {
+    return getSDPath() + "/callme/voices/"+voiceName;
   }
 
 
