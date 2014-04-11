@@ -7,8 +7,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-    
-      <uses-permission android:name="android.permission.WAKE_LOCK" /> 
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 添加快捷图标 -->
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
@@ -46,6 +46,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pangff.listmediademo.RecordActivity"
+            android:label="@string/app_name" >
         </activity>
     </application>
 

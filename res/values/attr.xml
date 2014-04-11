@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RecordView">
+        <attr name="backgroundcolor" format="color" />
+        <attr name="circlecolor" format="color" />
+        <attr name="circlecount" format="integer" />
+        <attr name="recordmaxtime" format="integer" />
+        <attr name="center" format="reference" />
+        <attr name="timefontsize" format="dimension" />
+        <attr name="timerectheight" format="dimension" />
+        <attr name="timeprogressundowidth" format="dimension" />
+        <attr name="timeprogressundoheight" format="dimension" />
+        <attr name="timeprogressdoheight" format="dimension" />
+    </declare-styleable>
+
+</resources>

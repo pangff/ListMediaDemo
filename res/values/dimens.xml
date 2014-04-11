@@ -4,4 +4,18 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+     <!-- RecordView Defualt Value -->
+    <dimen name="defualt_time_rect_heigt">24dp</dimen>
+    <dimen name="defualt_time_progress_undo_width">175dp</dimen>
+    <dimen name="defualt_time_progress_undo_heigt">4dp</dimen>
+    <dimen name="defualt_time_progress_do_heigt">4dp</dimen>
+    <dimen name="defualt_time_font_size">14sp</dimen>
+    <dimen name="superman_min_info">165dp</dimen>
+    <dimen name="superman_min_info_inv">5dp</dimen>
+    <dimen name="superman_min_spacing">5dp</dimen>
+    <dimen name="fast_select_defualt_size">12sp</dimen>
+    <dimen name="tool_container_height">250dp</dimen>
+    <dimen name="position_min_info">165dp</dimen>
+    <dimen name="position_min_info_inv">5dp</dimen>
+    <dimen name="position_min_spacing">5dp</dimen>
 </resources>

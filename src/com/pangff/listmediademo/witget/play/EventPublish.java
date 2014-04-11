@@ -1,4 +1,4 @@
-package com.pangff.listmediademo.witget;
+package com.pangff.listmediademo.witget.play;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

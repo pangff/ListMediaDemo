@@ -1,7 +1,7 @@
 package com.pangff.listmediademo;
 
-import com.pangff.listmediademo.witget.ISoundBean;
-import com.pangff.listmediademo.witget.RootPojo;
+import com.pangff.listmediademo.witget.play.ISoundBean;
+import com.pangff.listmediademo.witget.play.RootPojo;
 
 
 

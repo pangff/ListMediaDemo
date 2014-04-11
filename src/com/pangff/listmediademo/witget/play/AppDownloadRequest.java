@@ -1,4 +1,4 @@
-package com.pangff.listmediademo.witget;
+package com.pangff.listmediademo.witget.play;
 
 /**
  * 网络文件下载请求

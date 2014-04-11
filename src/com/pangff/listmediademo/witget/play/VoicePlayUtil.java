@@ -1,9 +1,9 @@
-package com.pangff.listmediademo.witget;
+package com.pangff.listmediademo.witget.play;
 
 import android.media.MediaPlayer;
 
 import com.pangff.listmediademo.BaseActivity;
-import com.pangff.listmediademo.witget.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
+import com.pangff.listmediademo.witget.play.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
 
 public class VoicePlayUtil {
   BaseActivity activity;

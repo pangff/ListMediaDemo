@@ -1,4 +1,4 @@
-package com.pangff.listmediademo.witget;
+package com.pangff.listmediademo.witget.play;
 
 import java.io.File;
 
@@ -13,8 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pangff.listmediademo.R;
-import com.pangff.listmediademo.witget.AppDownloadTask.DownloadProgressListener;
-import com.pangff.listmediademo.witget.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
+import com.pangff.listmediademo.witget.play.AppDownloadTask.DownloadProgressListener;
+import com.pangff.listmediademo.witget.play.IPlayVoiceProgressListener.VoiceProgressChangedEvent;
 
 public class VoiceHolder {
   // 语音相关

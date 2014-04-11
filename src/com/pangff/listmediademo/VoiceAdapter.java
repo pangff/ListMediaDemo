@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.pangff.listmediademo.witget.ViewVoiceHolder;
-import com.pangff.listmediademo.witget.VoicePlayUtil;
+import com.pangff.listmediademo.witget.play.ViewVoiceHolder;
+import com.pangff.listmediademo.witget.play.VoicePlayUtil;
 
 public class VoiceAdapter extends BaseAdapter{
   VoicePlayUtil voicePlayUtil;

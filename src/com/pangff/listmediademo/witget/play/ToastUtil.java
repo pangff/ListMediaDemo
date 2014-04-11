@@ -1,4 +1,4 @@
-package com.pangff.listmediademo.witget;
+package com.pangff.listmediademo.witget.play;
 
 import android.widget.Toast;
 
@@ -34,9 +34,8 @@ public class ToastUtil {
 
       @Override
       public void run() {
-        toast.makeText(BaseApplication.self, msg, time);
         toast.setDuration(time);
-        toast.show();
+        toast.makeText(BaseApplication.self, msg, time).show();
       }
     });
   }
