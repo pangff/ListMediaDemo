@@ -21,19 +21,19 @@ import com.pangff.listmediademo.witget.record.RecordView.VoiceWatcher;
 @SuppressLint("HandlerLeak")
 public class RecordBtn extends TextView implements VoiceWatcher{
 
-  private WindowManager windowManager = null;
-  private WindowManager.LayoutParams windowParams = null;
   private RecordView recordView;
   Handler handler;
   public RecordBtn(Context context, AttributeSet attrs) {
     super(context, attrs);
     this.setText("按下开始录音");
+    recordView = new RecordView(context);
+    recordView.setVoiceWatcher(this);
     handler = new Handler(){
       @Override
       public void handleMessage(Message msg) {
         switch(msg.what){
           case AudioUtils.MSG_AMRFILECOMPLETE:
-            delRecordWindow();
+            resetRecord();
             Bundle bundle = msg.getData();
             String errorMsg = bundle.getString("errorMsg");
             if(errorMsg!=null){
@@ -41,7 +41,7 @@ public class RecordBtn extends TextView implements VoiceWatcher{
             }
             break;
           case AudioUtils.MSG_AMRFILECANCEL:
-            delRecordWindow();
+            resetRecord();
             ToastUtil.show("录音取消");
             break;
         }
@@ -56,7 +56,6 @@ public class RecordBtn extends TextView implements VoiceWatcher{
     float y = event.getRawY();
     switch(action){
       case MotionEvent.ACTION_DOWN:
-        addRecordWindow();
         recordView.startRecord();
         this.setText("抬起完成录音");
         return true;
@@ -67,7 +66,7 @@ public class RecordBtn extends TextView implements VoiceWatcher{
         if(x<location[0]||x>location[0]+this.getWidth()||y<location[1]||y>location[1]+this.getHeight()){
           if(recordView!=null){
             recordView.finishRecord();
-            delRecordWindow();
+            resetRecord();
             return true;
           }
         }
@@ -77,50 +76,46 @@ public class RecordBtn extends TextView implements VoiceWatcher{
       case MotionEvent.ACTION_UP:
         if(recordView!=null){
           recordView.finishRecord();
-          delRecordWindow();
+          resetRecord();
         }
         break;
     }
     return super.onTouchEvent(event);
   }
   
-  /**
-   * popWindow
-   * @param bm
-   * @param x
-   * @param y
-   */
-  private void addRecordWindow() {
-    try{
-      delRecordWindow();
-      windowParams = new WindowManager.LayoutParams();
-      windowParams.gravity = Gravity.CENTER;
-      windowParams.height = 800;
-      windowParams.width = WindowManager.LayoutParams.MATCH_PARENT;;
-      windowParams.flags =
-          WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-              | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-              | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-              | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-      windowParams.format = PixelFormat.TRANSLUCENT;
-      windowParams.windowAnimations = 0;
-
-      recordView = new RecordView(getContext());
-      recordView.setVoiceWatcher(this);
-      windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-      windowManager.addView(recordView, windowParams);
-    }catch(Exception e){
-      e.printStackTrace();
-    }
-    
-  }
+//  /**
+//   * popWindow
+//   * @param bm
+//   * @param x
+//   * @param y
+//   */
+//  private void addRecordWindow() {
+//    try{
+//      delRecordWindow();
+//      windowParams = new WindowManager.LayoutParams();
+//      windowParams.gravity = Gravity.CENTER;
+//      windowParams.height = 800;
+//      windowParams.width = WindowManager.LayoutParams.MATCH_PARENT;;
+//      windowParams.flags =
+//          WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+//              | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+//              | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+//              | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+//      windowParams.format = PixelFormat.TRANSLUCENT;
+//      windowParams.windowAnimations = 0;
+//
+//      recordView = new RecordView(getContext());
+//      recordView.setVoiceWatcher(this);
+//      windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+//      windowManager.addView(recordView, windowParams);
+//    }catch(Exception e){
+//      e.printStackTrace();
+//    }
+//    
+//  }
   
-  private void delRecordWindow(){
-    if(recordView != null){
-      this.setText("按下开始录音");
-      windowManager.removeView(recordView);
-      recordView = null;
-    }
+  private void resetRecord(){
+    this.setText("按下开始录音");
   }
 
   @Override
