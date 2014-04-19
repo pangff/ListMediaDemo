@@ -199,10 +199,11 @@ public class RecordView extends SurfaceView implements SurfaceHolder.Callback, R
     mPaint.setStyle(Style.STROKE);
     mPaint.setStrokeWidth(2);
     mPaint.setAntiAlias(true);
-    for (int i = 0; i < Math.max(currentLevel, 1); i++) {
-      canvas.drawCircle(canvasWidth / 2, dbHeight / 2, (float) (baseRadius + i * unitLength),
-          mPaint);
-    }
+    //去掉动画
+//    for (int i = 0; i < Math.max(currentLevel, 1); i++) {
+//      canvas.drawCircle(canvasWidth / 2, dbHeight / 2, (float) (baseRadius + i * unitLength),
+//          mPaint);
+//    }
     if (currentLevel > oldLevel) {
       currentLevel--;
     } else if (currentLevel < oldLevel) {
