@@ -91,22 +91,28 @@ public class RecordBtn extends TextView implements VoiceWatcher{
    * @param y
    */
   private void addRecordWindow() {
-    windowParams = new WindowManager.LayoutParams();
-    windowParams.gravity = Gravity.CENTER;
-    windowParams.height = 800;
-    windowParams.width = WindowManager.LayoutParams.MATCH_PARENT;;
-    windowParams.flags =
-        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-            | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-            | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-            | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-    windowParams.format = PixelFormat.TRANSLUCENT;
-    windowParams.windowAnimations = 0;
+    try{
+      delRecordWindow();
+      windowParams = new WindowManager.LayoutParams();
+      windowParams.gravity = Gravity.CENTER;
+      windowParams.height = 800;
+      windowParams.width = WindowManager.LayoutParams.MATCH_PARENT;;
+      windowParams.flags =
+          WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+              | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+              | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+              | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+      windowParams.format = PixelFormat.TRANSLUCENT;
+      windowParams.windowAnimations = 0;
 
-    recordView = new RecordView(getContext());
-    recordView.setVoiceWatcher(this);
-    windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-    windowManager.addView(recordView, windowParams);
+      recordView = new RecordView(getContext());
+      recordView.setVoiceWatcher(this);
+      windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+      windowManager.addView(recordView, windowParams);
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+    
   }
   
   private void delRecordWindow(){

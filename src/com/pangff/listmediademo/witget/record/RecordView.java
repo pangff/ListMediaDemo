@@ -52,10 +52,16 @@ public class RecordView extends SurfaceView implements SurfaceHolder.Callback, R
   public void setVoiceWatcher(VoiceWatcher voiceWatcher) {
     this.voiceWatcher = voiceWatcher;
   }
-  
-  public RecordView(Context context){
-    this(context,null);
+
+  public RecordView(Context context) {
+    this(context, null);
   }
+
+  @Override
+  protected void onAttachedToWindow() {
+    if (this.getParent() != null) super.onAttachedToWindow();
+  }
+
 
   public RecordView(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -199,11 +205,11 @@ public class RecordView extends SurfaceView implements SurfaceHolder.Callback, R
     mPaint.setStyle(Style.STROKE);
     mPaint.setStrokeWidth(2);
     mPaint.setAntiAlias(true);
-    //去掉动画
-//    for (int i = 0; i < Math.max(currentLevel, 1); i++) {
-//      canvas.drawCircle(canvasWidth / 2, dbHeight / 2, (float) (baseRadius + i * unitLength),
-//          mPaint);
-//    }
+    // 去掉动画
+    // for (int i = 0; i < Math.max(currentLevel, 1); i++) {
+    // canvas.drawCircle(canvasWidth / 2, dbHeight / 2, (float) (baseRadius + i * unitLength),
+    // mPaint);
+    // }
     if (currentLevel > oldLevel) {
       currentLevel--;
     } else if (currentLevel < oldLevel) {
